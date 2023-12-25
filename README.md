@@ -1,5 +1,4 @@
 
-```markdown
 # Customer Care Registry
 
 This is a Customer Care Registry project that facilitates communication and issue resolution among customers, agents, and the support team. The system allows customers to register complaints, transfer them, and engage in real-time chat with support agents.

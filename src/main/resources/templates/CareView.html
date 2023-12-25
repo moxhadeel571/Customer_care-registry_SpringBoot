@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Care view</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<style>
+    .table{
+        border-color: #85FFBD;
+
+
+    }
+    .container{
+        max-width: 1800px;
+    }
+</style>
+<body style="background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%););">
+<div th:insert="Fragment/Header::header" ></div>
+<br>
+<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+		<h1 class="display-4">Complaint Status</h1>
+		<p class="lead">Your concerns matter to us. We're diligently working on resolving your complaint and appreciate your patience as we strive to provide a swift resolution."</p>
+	</div>
+</div>
+<br>
+<div class="container">
+	<table class="table table-hover" >
+		<thead>
+		<tr>
+			<th scope="col">ID</th>
+			<th scope="col">Order Number</th>
+			<th scope="col">Product Name</th>
+			<th scope="col">Type Of Product</th>
+			<th scope="col">Email</th>
+			<th scope="col">Complaint Type</th>
+			<th scope="col">Purchase Date</th>
+			<th scope="col">Severity Level</th>
+			<th scope="col">Proof</th>
+			<th scope="col">Decision and Action</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr th:each="binding: ${data}">
+
+			<td th:text="${binding.careRecipientId}"></td>
+			<td th:text="${binding.orderNumber}"></td>
+			<td th:text="${binding.productName}"></td>
+			<td th:text="${binding.typeOfProduct}"></td>
+			<td th:text="${binding.emailAddress}"></td>
+			<td th:text="${binding.complaintType}"></td>
+			<td th:text="${binding.purchaseDate}"></td>
+			<td th:text="${binding.severityLevel}"></td>
+			<td >
+				<a th:href="@{/v1/download/{id}(id=${binding.careRecipientId})}" class="btn btn-outline-info">Download</a>
+			</td>
+			<td>
+				<form th:action="@{/v1/staus_YUVujsa/{id}(id=${binding.careRecipientId})}" method="post">
+				<select class="form-select" aria-label="Default select example" name="status">
+						<option selected>Choose Decision</option>
+						<option value="Proceeded">Proceeded</option>
+						<option value="Cancel">Cancel</option>
+					</select>
+					<button type="submit" class="btn btn-outline-dark">Action</button>
+				</form>
+
+			</td>
+		</tr>
+		</tbody>
+	</table>
+
+</div>
+<div th:insert="Fragment/Footer::footer" ></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

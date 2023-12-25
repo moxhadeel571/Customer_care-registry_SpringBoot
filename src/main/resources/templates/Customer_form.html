@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Customer Form</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<style>
+  .form-control{
+    border-style: wave;
+    border-color: #333333;
+    border-radius:0px;
+  }
+  .file-upload-form {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .file-upload-label input {
+    display: none;
+  }
+  .file-upload-label svg {
+    height: 50px;
+    fill: rgb(82, 82, 82);
+    margin-bottom: 20px;
+  }
+  .file-upload-label {
+    cursor: pointer;
+    background-color: #ddd;
+    padding: 30px 70px;
+    border-radius: 40px;
+    border: 2px dashed rgb(82, 82, 82);
+    box-shadow: 0px 0px 200px -50px rgba(0, 0, 0, 0.719);
+  }
+  .file-upload-design {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+  .browse-button {
+    background-color: rgb(82, 82, 82);
+    padding: 5px 15px;
+    border-radius: 10px;
+    color: white;
+    transition: all 0.3s;
+  }
+  .browse-button:hover {
+    background-color: rgb(14, 14, 14);
+  }
+  h1 {
+    text-align: center;
+  }
+  body {
+    background-color: #e9e9d4;
+    background-image: linear-gradient(179deg, #e9e9d4 0%, #85FFBD 35%, #ffffff 82%);
+  }
+
+  ol {
+    padding-left: 20px;
+  }
+
+  p {
+    margin-bottom: 15px;
+  }
+
+  form {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid black; /* Set border color */
+    border-radius: 10px; /* Set border radius for rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a box shadow */
+  }
+  .custom_button{
+    margin: 0 auto;
+    display: block;
+
+  }
+  .container {
+    overflow-y:  scroll; /* vertical scrollbar if needed */
+    height: 1400px; /* Adjust the height as needed */
+    border: 1px solid #ccc;
+  }
+.container{
+  padding-bottom: 200px;
+}
+
+  .form-label{
+    font-size: medium;
+    font-family: Calibri;
+  font-weight: bold;
+  font-size-adjust: initial;}
+</style>
+<body style="background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%););">
+
+<div th:insert="Fragment/Header::header"></div>
+<div class="container  ">
+  <div class="scrollable-element">
+  <h2 class="mb-4">Care Recipient Form</h2>
+
+  <form th:action="@{/v2/saveComplaint}"  id="FormId" method="post" enctype="multipart/form-data">
+    <div class="form-container">
+    <div class="mb-3">
+
+      <label for="name" class="form-label">Name</label>
+      <input type="text"  class="form-control" placeholder="Ex:- Persy c" id="name" name="name">
+    </div>
+      <div class="mb-3">
+      <label for="productName" class="form-label">Product Name</label>
+      <input type="text"  class="form-control" placeholder="Ex:- Persy c" id="productName" name="productName">
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" id="description" name="description" placeholder="Ex:- Write Concern here..." style="max-height: 250pc"></textarea>
+    </div>
+
+    <!-- ... (previous code) ... -->
+
+    <div class="mb-3">
+      <label for="typeOfProduct" class="form-label">Type of Product</label>
+      <select class="form-select" name="typeOfProduct" id="typeOfProduct" >
+        <option value="Electronics">Electronics</option>
+        <option value="Appliances">Appliances</option>
+        <option value="Clothing">Clothing</option>
+        <option value="Furniture">Furniture</option>
+        <option value="Books">Books</option>
+        <option value="Toys">Toys</option>
+        <option value="Jewelry">Jewelry</option>
+        <!-- Add more options based on the types of products you want to include -->
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="purchaseDate" class="form-label">Purchase Date</label>
+      <input  type="date" class="form-control" id="purchaseDate" name="purchaseDate">
+    </div>
+    <h3 class="form-label">Upload Documents</h3>
+    <div class="file-upload-form">
+      <label for="file" class="file-upload-label" >
+        <div class="file-upload-design">
+          <svg viewBox="0 0 640 512" height="1em">
+            <path
+                    d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"
+            ></path>
+          </svg>
+          <p>Drag and Drop</p>
+          <p>or</p>
+          <span class="browse-button">Browse file</span>
+        </div>
+        <input id="file" type="file" name="files" multiple="multiple" />
+      </label>
+    </div>
+    <div class="mb-3">
+      <label for="contactNumber" class="form-label">Contact Number</label>
+      <input  type="number" class="form-control" id="contactNumber" name="contactNumber">
+    </div>
+      <div class="mb-3">
+        <label for="to" class="form-label">Email Address </label>
+        <input type="email" class="form-control" name="to" id="to">
+      </div>
+
+      <div class="mb-3">
+    <label for="address" class="form-label"> Address </label>
+    <input  type="text" class="form-control" id="address" name="address">
+</div>
+    <div class="mb-3">
+      <label for="incidentDateTime" class="form-label"> Incident DateTime </label>
+      <input  type="Date" class="form-control" id="incidentDateTime" name="incidentDateTime">
+    </div>
+    <!-- Add more form fields based on your model attributes -->
+    <div class="mb-3">
+      <label for="complaintType" class="form-label">Complaint Type</label>
+      <select class="form-select" id="complaintType" name="complaintType">
+        <option selected >Select Complaint Type</option>
+        <option value="delivery">Delivery Issues</option>
+        <option value="product">Product Quality</option>
+        <option value="customer-service">Customer Service</option>
+        <option value="payment">Payment Problems</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="severityLevel" class="form-label">Severity Level</label>
+      <select class="form-select" id="severityLevel" name="severityLevel">
+        <option selected disabled>Select Severity Level</option>
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="orderNumber" class="form-label"> Order Number  </label>
+      <input  type="text" class="form-control" id="orderNumber" name="orderNumber">
+    </div>
+    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#termsModal">
+      View Terms and Conditions
+    </button>
+
+    <div class="form-check form-switch mt-3">
+      <input class="form-check-input" type="checkbox" id="termsAgreement" name="termsAndConditionsAgreement">
+      <label class="form-check-label" for="termsAgreement">
+        I agree to the terms and conditions</label>
+    </div>
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="termsModalLabel">Terms and Conditions</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <!-- Add your terms and conditions text here -->
+            <h1>Terms and Conditions for Complaint Registry</h1>
+
+            <p><strong>1. Acceptance of Terms</strong></p>
+            <p>By using our complaint registry service, you agree to comply with these terms and conditions. If you do not agree, please do not use our services.</p>
+
+            <!-- Add more sections as needed -->
+
+            <p><strong>10. Governing Law</strong></p>
+            <p>These terms and conditions are governed by the laws of [Your Jurisdiction].</p>
+
+            <p>By using our complaint registry service, you acknowledge that you have read, understood, and agreed to these terms and conditions.</p>
+
+            <p>Care Registry<br>
+               Date: <span id="currentDate"></span></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+      <button type="submit" onclick="popup()" class="custom_button btn-lg btn btn-dark">Submit</button>
+
+    </div>
+  </form>
+</div>
+<br>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<div class="footer" th:insert="Fragment/Footer::footer"></div>
+<script>
+  // JavaScript to display the current date
+  const currentDateElement = document.getElementById('currentDate');
+  const currentDate = new Date().toLocaleDateString();
+  currentDateElement.textContent = currentDate;
+</script>
+<script>
+  const popup = () => {
+    // Call SweetAlert here
+    Swal.fire({
+      title: 'Submit Confirmation',
+      text: 'Your Complaint has Registered',
+      icon: 'info',
+    });
+
+// Set a timeout to delay the redirection
+    setTimeout(function () {
+      // Your redirection code here
+      window.location.href = 'Customer_form.html';
+    }, 3000);
+  }
+
+</script>
+</div>
+</body>
+</html>

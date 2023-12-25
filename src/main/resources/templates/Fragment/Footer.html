@@ -1,0 +1,43 @@
+<style>
+    .footer{
+        margin-bottom: -12px;
+        background-color: #85FFBD;
+        background-image: linear-gradient(87deg, #85FFBD 32%, #FFFB7D 94%;
+        mix-blend-mode: darken;
+        position: sticky;
+        bottom: 0;
+    }
+    .text{
+        color: #85FFBD;
+	    font: x-large;
+	    font-family: Bahnschrift ;
+	    font-weight: bolder;
+    }
+</style>
+
+<footer th:fragment="footer" class="footer  text-light text-center" style="background-color: black">
+		<div class="row">
+			<div class="col-md-4">
+				<h4  class="text">About Us</h4>
+				<p class="text">Empowering People, Enhancing Potential. Your Success, Our Priority.</p>
+			</div>
+			<div class="col-md-4">
+				<h4 class="text">Contact Information</h4>
+				<p class="text">Email: info@CareRegistry.com<br>Phone: +123-456-7890</p>
+			</div>
+			<div class="col-md-4">
+				<h4 class="text">Follow Us</h4>
+				<a href="#" class="btn btn-primary btn-social">
+					<i class="fab fa-facebook-f"></i>
+				</a>
+				<a href="#" class="btn btn-primary btn-social">
+					<i class="fab fa-twitter"></i>
+				</a>
+				<a href="#" class="btn btn-primary btn-social">
+					<i class="fab fa-instagram"></i>
+				</a>
+			</div>
+		</div>
+		<hr>
+		<p class="text">&copy; 2023 Care Registry On Your Service</p>
+</footer>

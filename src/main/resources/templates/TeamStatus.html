@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<style>
+  .table{
+    border-color: #85FFBD;
+
+  }
+</style>
+<body style="background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%););">
+<div th:insert="Fragment/Header::header" ></div>
+<br>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Complaint Status</h1>
+    <p class="lead">Your concerns matter to us. We're diligently working on resolving your complaint and appreciate your patience as we strive to provide a swift resolution."</p>
+  </div>
+</div>
+<br>
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Order Number</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Type Of Product</th>
+      <th scope="col">Purchase Date</th>
+      <th scope="col">Complaint Type</th>
+      <th scope="col">Purchase Date</th>
+      <th scope="col">Severity Level</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="info:${careRecipientList}">
+      <th scope="row" th:text="${info.careRecipientId}"></th>
+      <td th:text="${info.orderNumber}"></td>
+      <td th:text="${info.productName}"></td>
+      <td th:text="${info.typeOfProduct}"></td>
+      <td th:text="${info.purchaseDate}"></td>
+      <td th:text="${info.complaintType}"></td>
+      <td th:text="${info.purchaseDate}"></td>
+      <td th:text="${info.severityLevel}"> </td>
+      <td class="badge text-bg-success" th:text="${info.status}"></td>
+      <td >
+        <form th:action="@{/v3/saveDecision/{id}(id=${info.careRecipientId})}" method="post">
+          <select name="Approval" class="form-select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            <option value="Approve">Approve</option>
+            <option value="Disapprove">Disapprove</option>
+          </select>
+          <div>
+            <button type="submit" class="btn btn-outline-dark">Submit</button>
+          </div>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div th:insert="Fragment/Footer::footer" ></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

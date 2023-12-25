@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Customer Dashboard</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/JQuery.js"></script>
+	<script type="text/javascript" src="/js/Web.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+	      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<style>
+    body {
+        background-color: #e9e9d4;
+        background-image: linear-gradient(179deg, #e9e9d4 0%, #85FFBD 35%, #ffffff 82%);
+    }
+
+
+    .btn-lg-custom {
+        text-align: center;
+    }
+
+    .card {
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        max-height: 8%;
+        max-width: 25%;
+    }
+
+    .card-img-top {
+        object-fit: contain;
+    }
+
+    .togglebutton {
+        border-style: wave;
+        border-radius: 15px 15px;
+    }
+
+    /* Remove fixed height on the container */
+    .container {
+        margin-top: 60px;
+        width: 100%;
+        overflow: scroll;
+    }
+
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+	    flex-direction: row;
+        justify-content: space-between;
+    }
+
+</style>
+
+<body style="background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%););">
+
+<div th:insert="Fragment/Header::header"></div>
+<br>
+<div class="container">
+	<div class="card-container">
+		<div class="card">
+			<img src="/Image/customer.png" class="card-img-top" alt="..." height="250" width="200">
+			<hr>
+			<div class="card-body">
+				<h5 class="card-title">Complaint Register</h5>
+				<p class="card-text">Your feedback matters. We believe in continuous improvement. Let us know
+				                     your thoughts, and together, we'll strive to make your experience better.</p>
+				<p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+				<a href="/v2/ComplainForm_YbBKN" class=" btn btn-outline-dark">Complaint</a>
+			</div>
+		</div>
+
+		<div class="card">
+			<img src="/Image/Status.png" class="card-img-top" alt="..." height="250" width="200">
+			<hr>
+			<div class="card-body">
+				<h5 class="card-title">Complaint Status</h5>
+				<p class="card-text">Tracking your complaint status is our commitment to transparency and
+				                     resolution. Your concern is important, and we are diligently working to address it. Thank you
+				                     for your patience as we strive to provide you with timely updates.</p>
+				<p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+				<a th:href="@{/v2/status}" class="btn-lg-custom btn btn-outline-dark">Complaint</a>
+			</div>
+		</div>
+		<div class="card">
+			<img src="/Image/chat-amico.png" class="card-img-top" alt="Final Status Image" height="250" width="200">
+			<hr>
+			<div class="card-body">
+				<h5 class="card-title">Chat </h5>
+				<p class="card-text">Your complaint can be registered via chat have chat with our finest agents</p>
+				<p class="card-text"><small class="text-body-secondary">Final status updated just now</small></p>
+				<a th:href="@{/v2/FinalStatus}" class="btn-lg-custom btn btn-outline-success">Final Status</a>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+<div class="footer" th:insert="Fragment/Footer::footer"></div>
+
+</body>
+
+</html>

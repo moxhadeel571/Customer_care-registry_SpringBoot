@@ -1,4 +1,3 @@
-## Certainly! Below is a sample README.md file for a Customer Care Registry project with three roles (Customer, Agent, and Team). It includes information about the functionalities related to complaints, transfers, and chat.
 
 ```markdown
 # Customer Care Registry

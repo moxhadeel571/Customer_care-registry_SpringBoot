@@ -37,27 +37,28 @@ Support teams handle:
 - MySQL (as the database)
 - Lombok (to reduce boilerplate code)
 
-## Getting Started
+### Getting Started
 
-### Prerequisites
-
-- Java 17
-- MySQL Database
-- Gradle
-
-### Installation
-
-1. Clone the repository:
+1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-username/customer-care-registry.git
+   git clone https://github.com/moxhadeel571/HRMTOOL_SPRINGBOOT.git
+   cd HRMTOOL_SPRINGBOOT
    ```
 
-2. Configure your MySQL database settings in `src/main/resources/application.properties`.
+2. **Database Configuration:**
+   - Configure your MySQL database settings in `src/main/resources/application.properties`.
+   - Create a database named `hrm_tool`.
 
-3. Run the application:
+3. **Run the Application:**
    ```bash
    ./gradlew bootRun
    ```
+
+   The application will start at `http://localhost:8080`.
+###Video Tutorial
+
+https://github.com/moxhadeel571/HRMTOOL_SPRINGBOOT/assets/60618158/7efa0851-1684-4b9c-b161-c1bf582fa167
+
 
 4. Open your browser and visit [http://localhost:8080](http://localhost:8080) to access the application.
 
